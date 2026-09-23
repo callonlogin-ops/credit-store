@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Credit Store — Central do projeto</title>
+  <meta name="description" content="Links e instruções oficiais para instalar e executar o projeto Credit Store.">
+  <style>
+    :root { color-scheme: dark; --bg:#08111f; --card:#111d31; --text:#e7eef9; --muted:#9aabc2; --brand:#2a8eff; --warn:#f5b942; }
+    * { box-sizing:border-box; }
+    body { margin:0; min-height:100vh; font-family:system-ui,-apple-system,Segoe UI,sans-serif; background:linear-gradient(135deg,#08111f,#16294a); color:var(--text); }
+    main { width:min(960px,calc(100% - 32px)); margin:0 auto; padding:48px 0; }
+    .hero,.card { border:1px solid #ffffff1c; border-radius:20px; background:#0d192bdd; box-shadow:0 16px 50px #0004; }
+    .hero { padding:32px; }
+    h1 { margin:0 0 12px; font-size:clamp(2rem,5vw,4rem); }
+    h2 { margin-top:0; }
+    p { color:var(--muted); line-height:1.7; }
+    .actions,.grid { display:grid; gap:16px; }
+    .actions { grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); margin-top:24px; }
+    .grid { grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); margin-top:20px; }
+    .card { padding:22px; }
+    a.button,a.link { display:inline-block; color:white; text-decoration:none; }
+    a.button { padding:12px 16px; border-radius:10px; background:var(--brand); font-weight:700; text-align:center; }
+    a.link { color:#86bdff; word-break:break-word; }
+    code { display:block; overflow:auto; padding:16px; border-radius:12px; background:#050b14; color:#d9e8ff; }
+    .warning { border-left:4px solid var(--warn); padding-left:14px; }
+    footer { margin-top:28px; color:var(--muted); font-size:.9rem; }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="hero">
+      <h1>Credit Store</h1>
+      <p>Central de instalação, execução e links oficiais do projeto. Esta página é apenas uma interface web: ela não executa comandos do sistema, não faz flash em aparelhos e não instala imagens ISO.</p>
+      <div class="actions">
+        <a class="button" href="https://github.com/callonlogin-ops/credit-store" target="_blank" rel="noopener noreferrer">Abrir repositório</a>
+        <a class="button" href="https://play.google.com/console/u/0/signup" target="_blank" rel="noopener noreferrer">Play Console</a>
+        <a class="button" href="Start.sh">Ver Start.sh</a>
+      </div>
+    </section>
+
+    <section class="grid">
+      <article class="card">
+        <h2>Instalação</h2>
+        <p>Execute os comandos abaixo em um terminal Linux, macOS ou Termux.</p>
+        <code>git clone https://github.com/callonlogin-ops/credit-store.git
+cd credit-store
+chmod +x Index.sh Start.sh
+./Start.sh install
+nano .env.local
+./Start.sh start</code>
+      </article>
+      <article class="card">
+        <h2>Links oficiais</h2>
+        <p><a class="link" href="https://www.microsoft.com/pt-br/software-download/windows10iso" target="_blank" rel="noopener noreferrer">Microsoft — Windows 10 ISO</a></p>
+        <p><a class="link" href="https://play.google.com/console/u/0/signup" target="_blank" rel="noopener noreferrer">Google Play Console</a></p>
+        <p><a class="link" href="https://www.mediafire.com/" target="_blank" rel="noopener noreferrer">MediaFire</a></p>
+        <p><a class="link" href="https://www.bradesco.com.br/" target="_blank" rel="noopener noreferrer">Bradesco</a></p>
+        <p><a class="link" href="https://meu.inss.gov.br/" target="_blank" rel="noopener noreferrer">Meu INSS</a></p>
+      </article>
+    </section>
+
+    <section class="card" style="margin-top:20px">
+      <h2>Segurança</h2>
+      <p class="warning">Não execute <code>fastboot flash boot</code> sem confirmar o modelo do dispositivo, a imagem correta, o bootloader e possuir backup. Um flash incorreto pode inutilizar o aparelho e apagar dados. O Credit Store não precisa de fastboot para funcionar.</p>
+      <p>Não coloque senhas, tokens, chaves de API, credenciais bancárias ou documentos pessoais no HTML, no repositório ou no arquivo <code>.env</code> versionado.</p>
+    </section>
+
+    <footer>Projeto: <a class="link" href="https://github.com/callonlogin-ops/credit-store">github.com/callonlogin-ops/credit-store</a></footer>
+  </main>
+</body>
+</html>
