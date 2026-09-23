@@ -1,0 +1,8 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Credit Store — Start</title><style>body{font-family:system-ui;background:#08111f;color:#e7eef9;max-width:760px;margin:auto;padding:32px;line-height:1.6}code,pre{background:#050b14;padding:12px;border-radius:8px;display:block;overflow:auto}a{color:#86bdff}.warn{border-left:4px solid #f5b942;padding-left:14px}</style></head><body><h1>Credit Store</h1><p>Use o script shell no terminal para preparar e iniciar o backend Next.js. O navegador não pode executar scripts shell por segurança.</p><pre>git clone https://github.com/callonlogin-ops/credit-store.git
+cd credit-store
+chmod +x Index.sh Start.sh
+./Start.sh install
+nano .env.local
+./Start.sh migrate
+./Start.sh start</pre><p>Depois abra <a href="http://localhost:3000/Index.html">a página de cadastro e upload</a>.</p><p><a href="https://play.google.com/console/u/0/signup" target="_blank" rel="noopener">Google Play Console</a> · <a href="https://www.microsoft.com/pt-br/software-download/windows10iso" target="_blank" rel="noopener">Windows ISO oficial</a></p><p class="warn">Não execute <code>fastboot flash boot</code> sem confirmar modelo, imagem, bootloader e backup. O Credit Store não precisa de fastboot.</p></body></html>
