@@ -1,0 +1,77 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum UserRole {
+  USER
+  DEVELOPER
+  ADMIN
+}
+
+enum AppStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+model User {
+  id           String      @id @default(cuid())
+  name         String
+  email        String      @unique
+  passwordHash String
+  role         UserRole    @default(USER)
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @updatedAt
+  developer    Developer?
+  apps         App[]
+  downloads    Download[]
+}
+
+model Developer {
+  id          String   @id @default(cuid())
+  userId      String   @unique
+  companyName String?
+  bio         String?
+  website     String?
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  apps        App[]
+  createdAt   DateTime @default(now())
+}
+
+model App {
+  id          String      @id @default(cuid())
+  title       String
+  slug        String      @unique
+  description String
+  category    String
+  version     String
+  fileUrl     String
+  iconUrl     String?
+  fileName    String
+  fileSize    Int
+  status      AppStatus   @default(PENDING)
+  downloads   Int         @default(0)
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+  developerId String
+  developer   Developer   @relation(fields: [developerId], references: [id], onDelete: Cascade)
+  ownerId     String
+  owner       User        @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+  downloadLog Download[]
+  @@index([status, createdAt])
+}
+
+model Download {
+  id        String   @id @default(cuid())
+  appId     String
+  userId    String?
+  createdAt DateTime @default(now())
+  app       App      @relation(fields: [appId], references: [id], onDelete: Cascade)
+  user      User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+  @@index([appId, createdAt])
+}
